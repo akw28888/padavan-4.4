@@ -100,7 +100,7 @@
                 };
 
                 partition@ff0000 {
-                        label = "board_data"
+                        label = "board_data";
                         reg = <0xff0000 0x10000>; /* 64K */
                 };
 
