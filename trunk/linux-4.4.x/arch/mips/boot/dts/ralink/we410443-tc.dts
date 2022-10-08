@@ -96,12 +96,12 @@
 
                 partition@800000 {
                         label = "Reversed";
-                        reg = <0x800000 0x7f0000> /* 8128K: crash_dump(64k),Kernel2(7872k),seccfg(64k),pricfg(64k),arc_log(64k) */
+                        reg = <0x800000 0x7f0000>; /* 8128K: crash_dump(64k),Kernel2(7872k),seccfg(64k),pricfg(64k),arc_log(64k) */
                 };
 
                 partition@ff0000 {
                         label = "board_data"
-                        reg = <0xff0000 0x10000> /* 64K */
+                        reg = <0xff0000 0x10000>; /* 64K */
                 };
 
                 partition@all {
