@@ -4,6 +4,6 @@
 # WE410443-TC # WE410443-TC       # MT7621  #
 ##################################################################
 
-CFLAGS += -DBOARD_WE4140443_TC
+CFLAGS += -DBOARD_WE410443_TC
 BOARD_NUM_USB_PORTS=0
 CONFIG_BOARD_RAM_SIZE=128
