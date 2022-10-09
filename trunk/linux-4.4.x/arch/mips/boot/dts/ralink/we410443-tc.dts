@@ -86,10 +86,10 @@
 
                 partition@50000 {
                         label = "firmware";
-                        reg = <0x50000 0x780000>; /* (0x7b0000 - 0x80000) = 0x780000 */
+                        reg = <0x50000 0x730000>; /* (0x7b0000 - 0x80000) = 0x730000 */
                 };
 
-                partition@f80000 {
+                partition@780000 {
                         label = "Storage";
                         reg = <0x780000 0x80000>; /* 512K */
                 };
