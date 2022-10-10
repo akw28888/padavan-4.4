@@ -18,17 +18,17 @@
 
 		sys_red {
 			label = "power";
-			gpios = <&gpio0 44 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
 		};
 
 		sys_orange {
 			label = "power_2";
-			gpios = <&gpio0 42 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
 		};
 
 		sys_blue {
 			label = "wan";
-			gpios = <&gpio0 41 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio1 10 GPIO_ACTIVE_HIGH>;
 		};
 	};
 
