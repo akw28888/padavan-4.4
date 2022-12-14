@@ -1,0 +1,113 @@
+/dts-v1/;
+
+#include "mt7621.dtsi"
+#include <dt-bindings/input/input.h>
+#include "mt7621-raeth-gmac2.dtsi"
+#include "mt7621-pinctrl-default-gpio.dtsi"
+
+/ {
+	compatible = "mediatek,mt7621-soc";
+	model = "Arcadyan WG630223-TC";
+
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		sys_blue {
+			label = "wan";
+			gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
+		};
+
+		sys_green {
+			label = "power";
+			gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+		};
+		sys_red {
+			label = "power_2";
+			gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
+		};
+	};
+
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+
+		reset {
+			label = "reset";
+			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_RESTART>;
+		};
+	};
+};
+
+&bch {
+	status = "okay";
+};
+
+&nand {
+	status = "okay";
+
+	flash@0 {
+		reg = <0>;
+		nand-ecc-mode = "hw";
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "Bootloader";
+				reg = <0x0 0x80000>; /* 512k */
+			};
+
+			partition@80000 {
+				label = "Config";
+				reg = <0x80000 0x80000>; /* 512k */
+			};
+
+			partition@100000 {
+				label = "Factory";
+				reg = <0x100000 0x80000>; /* 512k */
+			};
+
+			partition@180000 {
+				label = "firmware";
+				reg = <0x180000 0x1400000>;	/* 24M */
+			};
+
+			partition@1580000 {
+				label = "Storage";
+				reg = <0x1580000 0x400000>; /* 4096K */
+			};
+
+			partition@1980000 {
+				label = "firmware_backup";
+				reg = <0x1980000 0x1800000>;
+			};
+
+			partition@3180000 {
+				label = "firmware_mp";
+				reg = <0x3180000 0x1800000>;
+			};
+
+			partition@4f80000 {
+				label = "board_data";
+				reg = <0x4f80000 0x200000>;
+				read-only;
+			};
+
+			partition@all {
+				label = "ALL";
+				reg = <0x0 0x5180000>;
+			};
+		};
+	};
+};
+
+&pcie {
+	status = "okay";
+};
